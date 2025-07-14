@@ -8,11 +8,15 @@ import companyRoute from "./routes/company.route.js";
 import jobRoute from "./routes/job.route.js";
 import applicationRoute from "./routes/application.route.js";
 
-dotenv.config({});
+
+
+dotenv.config();
+//  dotenv.config({ debug: true });
+//  console.log(process.env.SECRET)
 
 const app = express();
 
-// middleware
+//middleware
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
@@ -23,7 +27,9 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
+
+
 
 
 // api's

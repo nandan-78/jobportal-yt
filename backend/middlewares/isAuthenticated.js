@@ -1,4 +1,7 @@
 import jwt from "jsonwebtoken";
+import dotenv from 'dotenv'
+dotenv.config();
+const secretKey = process.env.SECRET_KEY;
 
 const isAuthenticated = async (req, res, next) => {
     try {
@@ -9,7 +12,7 @@ const isAuthenticated = async (req, res, next) => {
                 success: false,
             })
         }
-        const decode = await jwt.verify(token, process.env.SECRET_KEY);
+        const decode = await jwt.verify(token, secretKey);
         if(!decode){
             return res.status(401).json({
                 message:"Invalid token",
